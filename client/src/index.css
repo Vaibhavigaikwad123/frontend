@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+    /* Brand color palette mapped to standard blue */
+    --color-brand-50: var(--color-blue-50);
+    --color-brand-100: var(--color-blue-100);
+    --color-brand-200: var(--color-blue-200);
+    --color-brand-300: var(--color-blue-300);
+    --color-brand-400: var(--color-blue-400);
+    --color-brand-500: var(--color-blue-500);
+    --color-brand-600: var(--color-blue-600);
+    --color-brand-700: var(--color-blue-700);
+    --color-brand-800: var(--color-blue-800);
+    --color-brand-900: var(--color-blue-900);
+    --color-brand-950: var(--color-blue-950);
+}
+
+
+
+/* Global variables moved to top level for priority */
+:root {
+    --bg-main: #ffffff;
+    --text-main: #000000;
+    color-scheme: light;
+}
+
+:root.dark {
+    --bg-main: #030712;
+    --text-main: #f9fafb;
+    color-scheme: dark;
+}
+
+html,
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+@layer base {
+    body {
+        margin: 0;
+        min-height: 100vh;
+        @apply transition-colors duration-300 ease-in-out antialiased;
+    }
+
+    /* Standard border colors matching theme */
+    * {
+        @apply border-gray-200 dark:border-gray-800;
+    }
+
+    /* Layout consistency */
+    nav,
+    footer,
+    aside,
+    main {
+        background-color: transparent;
+    }
+}
+
+/* Ensure focus rings use brand color */
+@layer utilities {
+    .focus-ring {
+        @apply focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 outline-none;
+    }
+}
