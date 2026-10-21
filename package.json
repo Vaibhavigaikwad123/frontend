@@ -1,0 +1,20 @@
+{
+    "name": "stationery-shop-root",
+    "version": "1.0.0",
+    "description": "Root package to manage both client and server",
+    "main": "index.js",
+    "scripts": {
+        "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+        "server": "cd server && node index.js",
+        "client": "cd client && npm run dev",
+        "start": "concurrently \"npm run server\" \"npm run client\"",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "dependencies": {
+        "baseline-browser-mapping": "^2.10.37",
+        "caniuse-lite": "^1.0.30001799"
+    }
+}
